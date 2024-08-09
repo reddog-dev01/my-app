@@ -1,0 +1,40 @@
+$nav-bg-color: white;
+$link-color: #585050;
+$link-hover-bg-color: #ddd;
+$link-hover-color: black;
+$active-bg-color: #339d81;
+$active-color: white;
+$link-padding: 20px 40px;
+$link-font-size: 20px;
+$link-border-radius: 10px;
+$link-margin: 5px;
+
+.topnav {
+  background-color: $nav-bg-color;
+  overflow: hidden;
+  padding: 10px;
+
+  a {
+    float: left;
+    color: $link-color;
+    text-align: center;
+    padding: $link-padding;
+    text-decoration: none;
+    font-size: $link-font-size;
+    border-radius: $link-border-radius;
+    margin: $link-margin;
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 0px 0px 8px #ddd;
+    // box-shadow: 2px 2px 4px rgba(75, 69, 83, 0.141);
+
+    &:hover {
+      background-color: $link-hover-bg-color;
+      color: $link-hover-color;
+    }
+
+    &.active {
+      background-color: $active-bg-color;
+      color: $active-color;
+    }
+  }
+}

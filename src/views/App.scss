@@ -1,0 +1,78 @@
+.App {
+  text-align: center;
+  justify-content: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+.slider {
+  display: flex;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 10px;
+}
+// .slider .slide-track {
+//   animation: croll 40s linear infinite;
+//   display: flex;
+//   width: calc(250px * 14);
+// }
+.slider .slide {
+  width: 100%;
+  height: 100px;
+  object-fit: none;
+  margin-right: 10px;
+}
+.search-bar-container {
+  padding-top: 2vh;
+  width: 30%;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 200px;
+}
+// .image-item {
+//   display: grid;
+//   grid-template-columns: repeat(
+//     3,
+//     1fr
+//   ); /* Số cột bằng với số lượng ảnh, hoặc bạn có thể điều chỉnh */
+//   gap: 10px; /* Khoảng cách giữa các ảnh */
+// }
+// .image-item img {
+//   width: 50%; /* Đảm bảo ảnh chiếm toàn bộ ô grid */
+//   height: 60px; /* Đặt kích thước mong muốn cho ảnh */
+//   object-fit: cover; /* Đảm bảo ảnh không bị biến dạng */
+// }
+.App-header {
+  background-color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // justify-content: 100px;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+.input[type="text"] {
+  border: 1px solid #ccc;
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

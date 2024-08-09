@@ -1,0 +1,282 @@
+body {
+  //font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  background-color: #f7f7f7;
+  // display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  //  font-size: 20px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  // box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+}
+
+.box {
+  background-color: #a4cbf0;
+  border-radius: 20px;
+  padding: 20px;
+  min-height: 200px;
+  min-width: 500px;
+  position: relative;
+}
+
+.box:nth-child(2),
+.box:nth-child(4) {
+  background-color: #a4cbf0;
+}
+.box h2 {
+  margin-top: 0;
+  // font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 1.25em;
+  letter-spacing: -1px;
+  word-spacing: 2px;
+  color: #000000;
+  font-weight: 500;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-align: left;
+}
+.box b {
+  color: #000;
+}
+.row {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.row div {
+  margin: 5px 0;
+  flex: 1;
+}
+.column {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.large-text {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: orange;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.large-text.blue {
+  color: blue;
+}
+
+.large-text.green {
+  color: rgb(29, 180, 29);
+}
+
+.large-text.red {
+  color: red;
+}
+
+.list-item {
+  color: black;
+  margin: 5px 0;
+}
+
+.list-item.red {
+  color: red;
+}
+
+.list-item.blue {
+  color: blue;
+}
+
+.list-item.black {
+  color: black;
+}
+.note {
+  display: flex;
+  justify-content: space-between;
+  background-color: #d3d3d3;
+  padding: 10px;
+  border-radius: 10px;
+}
+.item-container {
+  display: flex;
+  align-items: center;
+}
+.item {
+  border: 1px solid black;
+  padding: 5px;
+  // font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 1.25em;
+  letter-spacing: -1px;
+  word-spacing: 2px;
+  color: #000000;
+  font-weight: 500;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  display: flex;
+}
+.item-container i {
+  color: #000;
+  // font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 1em;
+}
+.row-note {
+  display: flex;
+  //gap: 150px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.black {
+  color: black;
+}
+
+.blue {
+  color: blue;
+}
+
+.red {
+  color: red;
+}
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #585656;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 1100px;
+  position: relative;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+@media (max-width: 1200px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .box {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .large-text {
+    font-size: 1.5em;
+  }
+
+  .box h2 {
+    font-size: 1em;
+  }
+
+  .item {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .box {
+    padding: 10px;
+  }
+
+  .note {
+    flex-direction: column;
+  }
+
+  .row-note {
+    gap: 10px;
+  }
+
+  .large-text {
+    font-size: 1em;
+  }
+
+  .box h2 {
+    font-size: 0.875em;
+  }
+
+  .item {
+    font-size: 0.875em;
+  }
+}
+.large-text,
+.list-item.blue,
+.list-item.red,
+.list-item.black {
+  cursor: pointer;
+}
+
+/* Hiệu ứng hover cho các phần tử có thể nhấp */
+.list-item.blue:hover {
+  background-color: #cce5ff;
+}
+
+.list-item.red:hover {
+  background-color: #cce5ff;
+}
+.large-text:hover {
+  background-color: #cce5ff;
+}
+.list-item.black:hover {
+  background-color: #cce5ff;
+}
+.list-item:hover {
+  background-color: #cce5ff;
+}
+.close:hover,
+.close:focus {
+  color: black;
+  background-color: #cce5ff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.row div {
+  margin: 5px 0;
+  flex: 1;
+  cursor: pointer;
+}
+
+.modal-content {
+  cursor: auto; /* Ghi đè trỏ chuột cho nội dung modal */
+}

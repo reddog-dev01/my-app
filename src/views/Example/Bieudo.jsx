@@ -18,44 +18,37 @@ export default function SimpleBarChart() {
 
         const parsedUData = data.map((item) => {
           const ast_v2 = parseFloat(item.ast_v2 || 0);
-          const tieu_cau_v2 = parseFloat(item.tieu_cau_v2 || 1); // Avoid division by zero
-          const gioi_tinh_v2 = item.gioi_tinh_v2; // Gender
+          const tieu_cau_v2 = parseFloat(item.tieu_cau_v2 || 1);
+          const gioi_tinh_v2 = item.gioi_tinh_v2;
 
           if (gioi_tinh_v2 === "2") {
-            // Female
             return (ast_v2 / 35 / tieu_cau_v2) * 100;
           } else {
-            // Male or empty
             return (ast_v2 / 40 / tieu_cau_v2) * 100;
           }
         });
 
-        // Parse data for ast_alt_v2
         const parsedAstAltData = data.map((item) =>
           parseFloat(item.ast_alt_v2 || 0)
         );
 
-        // Parse data for ast_v2/alt_v2 ratio
         const parsedAstAltRatioData = data.map((item) => {
           const ast_v2 = parseFloat(item.ast_v2 || 0);
-          const alt_v2 = parseFloat(item.alt_v2 || 1); // Avoid division by zero
+          const alt_v2 = parseFloat(item.alt_v2 || 1);
           return ast_v2 / alt_v2;
         });
 
-        // Parse data for nfs_v2
         const parsedNfsData = data.map((item) => parseFloat(item.nfs_v2 || 0));
 
-        // Calculate NFS based on the formula
         const parsedNfsCalculatedData = data.map((item) => {
           const tuoi_v2 = parseFloat(item.tuoi_v2 || 0);
-          const cannang_v2 = parseFloat(item.can_nang_v2 || 0); // Weight in kg
-          const chieu_cao_v2 = parseFloat(item.cao_v2 || 0); // Height in cm
+          const cannang_v2 = parseFloat(item.can_nang_v2 || 0);
+          const chieu_cao_v2 = parseFloat(item.cao_v2 || 0);
           const ast_v2 = parseFloat(item.ast_v2 || 0);
-          const alt_v2 = parseFloat(item.alt_v2 || 1); // Avoid division by zero
-          const tieu_cau_v2 = parseFloat(item.tieu_cau_v2 || 1); // Platelet count
+          const alt_v2 = parseFloat(item.alt_v2 || 1);
+          const tieu_cau_v2 = parseFloat(item.tieu_cau_v2 || 1);
           const albumin_v2 = parseFloat(item.albumin_v2 || 0);
 
-          // Avoid division by zero and check valid data
           if (
             isNaN(tuoi_v2) ||
             isNaN(cannang_v2) ||
@@ -68,15 +61,14 @@ export default function SimpleBarChart() {
             alt_v2 === 0 ||
             tieu_cau_v2 === 0
           ) {
-            return null; // Skip if any data is invalid
+            return null;
           }
 
-          // Calculate NFS
           const nfsCalculated =
             -1.675 +
             0.037 * tuoi_v2 +
             (0.094 * cannang_v2) / ((chieu_cao_v2 * chieu_cao_v2) / 10000) +
-            1.13 * 0 + // Assuming no diabetes, replace 0 with diabetes value if available
+            1.13 * 0 +
             0.99 * (ast_v2 / alt_v2) -
             0.013 * tieu_cau_v2 -
             0.66 * albumin_v2;
@@ -86,7 +78,6 @@ export default function SimpleBarChart() {
 
         const labels = data.map((item) => item.benh_an_id_v2);
 
-        // Debugging: Log calculated NFS values
         console.log("Calculated NFS values:", parsedNfsCalculatedData);
 
         setPData(parsedPData);
@@ -94,7 +85,7 @@ export default function SimpleBarChart() {
         setAstAltData(parsedAstAltData);
         setAstAltRatioData(parsedAstAltRatioData);
         setNfsData(parsedNfsData);
-        setNfsCalculatedData(parsedNfsCalculatedData.filter((v) => v !== null)); // Filter null values
+        setNfsCalculatedData(parsedNfsCalculatedData.filter((v) => v !== null));
         setXLabels(labels);
       })
       .catch((error) => console.error("Error fetching data:", error));
@@ -102,7 +93,6 @@ export default function SimpleBarChart() {
 
   return (
     <div style={{ width: "100%", maxWidth: "1200px", margin: "auto" }}>
-      {/* First Bar Chart for APRI */}
       <div style={{ width: "100%", height: "400px" }}>
         <BarChart
           series={[
@@ -113,7 +103,6 @@ export default function SimpleBarChart() {
         />
       </div>
 
-      {/* Second Bar Chart for AST ALT and AST/ALT ratio */}
       <div style={{ width: "100%", height: "400px", marginTop: "20px" }}>
         <BarChart
           series={[
@@ -128,7 +117,6 @@ export default function SimpleBarChart() {
         />
       </div>
 
-      {/* Third Bar Chart for NFS and calculated NFS */}
       <div style={{ width: "100%", height: "400px", marginTop: "20px" }}>
         <BarChart
           series={[

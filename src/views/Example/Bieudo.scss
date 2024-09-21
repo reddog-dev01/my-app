@@ -1,6 +1,6 @@
 .container-bd {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Display 2 charts side by side */
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
   background-color: #fff;
   padding: 20px;
@@ -8,7 +8,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   max-width: 1200px;
   width: 100%;
-  box-sizing: border-box; /* Include padding and border in element's width/height */
+  box-sizing: border-box;
 }
 
 .box-db {
@@ -16,27 +16,26 @@
   border-radius: 20px;
   padding: 20px;
   min-height: 200px;
-  width: 100%; /* Ensure it takes up the full width inside the grid */
-  max-width: 600px; /* Limit the maximum width */
+  width: 100%;
+  max-width: 600px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for prominence */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .chart-container {
-  width: 100%; /* Chart takes the full width of the box */
-  height: auto; /* Allow height to adjust based on width */
+  width: 100%;
+  height: auto;
 }
 
-/* Responsive design for smaller screens */
 @media (max-width: 768px) {
   .container-bd {
-    grid-template-columns: 1fr; /* Stacks charts vertically on small screens */
+    grid-template-columns: 1fr;
   }
 
   .box-db {
-    min-width: 100%; /* Full width for smaller screens */
+    min-width: 100%;
   }
 }

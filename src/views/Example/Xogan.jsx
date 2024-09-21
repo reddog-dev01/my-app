@@ -71,12 +71,12 @@ const Xogan = ({ results }) => {
       setAltV2(alt);
 
       if (height && weight) {
-        const heightInMeters = height / 100; // Chuyển chiều cao từ cm sang mét
-        setBMI(weight / (heightInMeters * heightInMeters)); // Tính BMI
+        const heightInMeters = height / 100;
+        setBMI(weight / (heightInMeters * heightInMeters));
       }
 
       if (ast) {
-        const upperLimit = gender === 2 ? 40 : 35; // 35 for female, 40 for male or unspecified
+        const upperLimit = gender === 2 ? 40 : 35;
         setApri((ast / upperLimit / tieuCau) * 100);
       } else {
         setApri(null);

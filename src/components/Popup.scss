@@ -1,4 +1,4 @@
-.modal {
+.modal-popup {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,7 +11,7 @@
   z-index: 1000;
 }
 
-.modal-main {
+.modal-main-popup {
   position: relative;
   background: white;
   border-radius: 20px;
@@ -49,9 +49,10 @@ button:hover {
   background-color: #0056b3;
 }
 
-.container1 {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+.container-popup-box {
+  display: flex;
+  flex-grow: 1;
+  // grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
   background-color: #fff;
   padding: 0px;
@@ -60,7 +61,7 @@ button:hover {
   margin: 0 auto;
 }
 
-.container2 {
+.container-popup-arrow {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;

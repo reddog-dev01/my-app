@@ -1,11 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import "./SearchBar.scss";
-import miniganData from "../data_gan.json";
 
 export const SearchBar = ({ setResults }) => {
   const [input, setInput] = useState("");
   const [message, setMessage] = useState("");
+  const [miniganData, setMiniganData] = useState([]);
+
+  useEffect(() => {
+    // Sử dụng fetch để lấy dữ liệu từ file JSON trong public
+    fetch("/data_gan.json")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Phản hồi mạng không thành công");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setMiniganData(data);
+      })
+      .catch((error) => console.error("Lỗi khi tải dữ liệu:", error));
+  }, []);
 
   const fetchData = (value) => {
     if (!value.trim()) {
@@ -13,7 +28,7 @@ export const SearchBar = ({ setResults }) => {
       setMessage("Hãy nhập để tìm kiếm");
       return;
     }
-    // gọi bệnh nhân
+    // Lọc bệnh nhân
     const results = miniganData.filter((record) => {
       return (
         record &&

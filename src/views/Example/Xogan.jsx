@@ -49,6 +49,7 @@ const Xogan = ({ results }) => {
   const [khoangCua, setKhoangcua] = useState(null);
   const [tieuThuy, setTieuthuy] = useState(null);
   const [giaidoanXogan, setgdXogan] = useState(null);
+  const [gender, setGender] = useState(null);
   useEffect(() => {
     if (results.length > 0) {
       const result = results[0];
@@ -60,19 +61,23 @@ const Xogan = ({ results }) => {
       const ast = result.ast_v2;
       const age = result.tuoi_v2;
       const alt = result.alt_v2;
-      const height = result.cao_v2;
-      const weight = result.can_nang_v2;
+      const height = result.chieu_cao_v2;
+      const weight = result.cannang_v2;
       const tieuCau = result.tieu_cau_v2;
-
+      setGender(result.gioi_tinh_v2);
       setAstV2(ast);
       setTieucau(tieuCau);
       setTuoiV2(age);
       setAltV2(alt);
 
-      setBMI(weight / ((height * height) / 10000));
+      if (height && weight) {
+        const heightInMeters = height / 100; // Chuyển chiều cao từ cm sang mét
+        setBMI(weight / (heightInMeters * heightInMeters)); // Tính BMI
+      }
 
       if (ast) {
-        setApri((ast / 40 / tieuCau) * 100);
+        const upperLimit = gender === 2 ? 40 : 35; // 35 for female, 40 for male or unspecified
+        setApri((ast / upperLimit / tieuCau) * 100);
       } else {
         setApri(null);
       }
@@ -139,7 +144,9 @@ const Xogan = ({ results }) => {
   };
 
   const formulas = {
-    APRI: `\\text{APRI} =\\left( \\frac{\\text{AST}}{\\text{giới hạn trên mức bình thường}} \\right) \\times \\left( \\frac{100}{\\text{số lượng tiểu cầu}} \\right) \\\\= \\left( \\frac{${astV2}}{40} \\right) \\times \\left( \\frac{100}{${tieuCau}} \\right)`,
+    APRI: `\\text{APRI} =\\left( \\frac{\\text{AST}}{\\text{giới hạn trên mức bình thường(nam/nữ=40/35)}} \\right) \\times \\left( \\frac{100}{\\text{số lượng tiểu cầu}} \\right) \\\\= \\left( \\frac{${astV2}}{${
+      gender === "2" ? 35 : 40
+    }} \\right) \\times \\left( \\frac{100}{${tieuCau}} \\right)`,
     FIB4: `\\text{FIB-4} = \\frac{\\text{tuổi} \\times \\text{AST}}{\\text{số lượng tiểu cầu} \\times \\sqrt{\\text{ALT}}} = \\frac{${tuoiV2} \\times ${astV2}}{${tieuCau} \\times \\sqrt{${altV2}}}`,
     NFS: `\\text{NFS} = -1.675 + 0.037 \\times \\text{tuổi} + 0.094 \\times \\text{BMI} + 1.13 \\times \\text{tiểu đường} 
     \\\\+ 0.99 \\times \\frac{\\text{AST}}{\\text{ALT}} - 0.013 \\times \\text{số lượng tiểu cầu} - 0.66 \\times \\text{Albumin}

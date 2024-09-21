@@ -4,6 +4,7 @@ import Nav from "../components/Nav/Nav";
 import GanNhiemMo from "./Example/Gannhiemmo";
 import Ungthugan from "./Example/Ungthugan";
 import Xogan from "./Example/Xogan";
+import Bieudo from "./Example/Bieudo";
 import { SearchBar } from "../components/SearchBar";
 import logo1 from "../assets/images/logo_vinif.png";
 import logo2 from "../assets/images/logo_hust.png";
@@ -45,6 +46,7 @@ function App() {
           </div>
           <Nav />
           <Routes>
+            <Route path="/bieudo" element={<Bieudo />} />
             <Route path="/nhiemmo" element={<GanNhiemMo results={results} />} />
             <Route path="/xogan" element={<Xogan results={results} />} />
             <Route path="/ungthugan" element={<Ungthugan />} />

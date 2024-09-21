@@ -8,6 +8,12 @@ const Nav = () => {
   return (
     <div className="topnav">
       <Link
+        className={location.pathname === "/bieudo" ? "active" : ""}
+        to="/bieudo"
+      >
+        Biểu đồ
+      </Link>
+      <Link
         className={location.pathname === "/nhiemmo" ? "active" : ""}
         to="/nhiemmo"
       >

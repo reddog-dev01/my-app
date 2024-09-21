@@ -4,11 +4,13 @@ import "katex/dist/katex.min.css";
 import { InlineMath, BlockMath } from "react-katex";
 
 const Popup = ({ handleClose, show, children }) => {
-  const showHideClassName = show ? "modal display-block" : "modal display-none";
+  const showHideClassName = show
+    ? "modal-popup display-block"
+    : "modal-popup display-none";
 
   return (
     <div className={showHideClassName}>
-      <section className="modal-main">
+      <section className="modal-main-popup">
         {children}
         <button type="button" onClick={handleClose}>
           Close
@@ -21,13 +23,13 @@ const Popup = ({ handleClose, show, children }) => {
             máu hoặc bằng mô học gan
           </p>
         </div>
-        <div className="container2">
+        <div className="container-popup-arrow">
           <div className="arrow arrow1"></div>
           <div className="arrow arrow2"></div>
           <div className="arrow arrow3"></div>
         </div>
 
-        <div className="container1">
+        <div className="container-popup-box">
           <div className="box2">
             <h3>Thừa cân hoặc béo phì</h3>
             <p>

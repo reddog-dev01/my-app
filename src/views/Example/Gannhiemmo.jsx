@@ -21,12 +21,18 @@ const GanNhiemMo = ({ results }) => {
       setChuyenhoa(results[0].trieu_chung_chuyen_hoa_v2);
       setHDLC(results[0].hdlc_v2);
       const age = results[0].tuoi_v2;
-      const height = results[0].cao_v2;
-      const weight = results[0].can_nang_v2;
+      const height = results[0].chieu_cao_v2;
+      const weight = results[0].cannang_v2;
       setTuoiV2(age);
-      setBMI(weight / ((height * height) / 10000));
+      if (height && weight) {
+        const heightInMeters = height / 100; // Convert height to meters
+        setBMI(weight / (heightInMeters * heightInMeters)); // BMI calculation
+      } else {
+        setBMI(null); // Reset BMI if height or weight is invalid
+      }
       setDonhiemmo(results[0].do_nhiem_mo);
       setNhiemmo(results[0].gan_nhiem_mo);
+      setTieuduong(parseInt(results[0].tieu_duong) || 0);
     } else {
       setTriglycerides(null);
       setHDLC(null);
@@ -101,7 +107,11 @@ const GanNhiemMo = ({ results }) => {
             </div>
             <div className="list-item red">
               <b>Tiểu đường: </b>
-              {tieuDuong !== null ? tieuDuong : ""}
+              {tieuDuong !== null
+                ? tieuDuong === 0
+                  ? "Không"
+                  : "Có"
+                : "chưa có dữ liệu"}
             </div>
           </div>
         </div>

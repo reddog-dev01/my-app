@@ -51,8 +51,7 @@ button:hover {
 
 .container-popup-box {
   display: flex;
-  flex-grow: 1;
-  // grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-around; /* Để phân bổ đều các box */
   gap: 10px;
   background-color: #fff;
   padding: 0px;
@@ -71,10 +70,29 @@ button:hover {
   max-width: 100%;
 }
 
-.box1,
+/* Căn chỉnh kích thước cho các box */
 .box2,
 .box3,
-.box4,
+.box4 {
+  background-color: #f4ab26;
+  width: 30%; /* Đặt cùng chiều rộng cho mỗi box */
+  padding: 10px;
+  text-align: center;
+  box-sizing: border-box; /* Đảm bảo padding không ảnh hưởng đến chiều rộng */
+  min-height: 100px; /* Đặt chiều cao tối thiểu để tránh đè chữ */
+}
+
+.box2 {
+  background-color: #f4ab26;
+}
+.box3 {
+  background-color: #8fbc8f;
+}
+.box4 {
+  background-color: #f26249;
+}
+
+.box1,
 .box5,
 .box6 {
   background-color: #fff;
@@ -87,18 +105,6 @@ button:hover {
 
 .box1 {
   background-color: #ffebcd;
-}
-
-.box2 {
-  background-color: #f4ab26;
-}
-
-.box3 {
-  background-color: #8fbc8f;
-}
-
-.box4 {
-  background-color: #f26249;
 }
 
 .box5 {
@@ -136,8 +142,6 @@ button:hover {
 
 .arrow1 {
   background: #f4ab26;
-  margin-left: 50%;
-  transform: translateX(-50%);
 }
 
 .arrow2 {
@@ -146,8 +150,6 @@ button:hover {
 
 .arrow3 {
   background: #f26249;
-  margin-left: 50%;
-  transform: translateX(-50%);
 }
 
 .arrow4,
@@ -180,30 +182,23 @@ h3 {
   font-size: 20px;
   color: #000000;
   font-weight: 500;
-  max-height: 10px;
 }
 
 p {
   font-size: 15px;
   color: #000000;
-  min-height: 10px;
 }
 
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .container1,
-  .container2 {
-    grid-template-columns: 1fr;
+  .container-popup-box {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .box1,
   .box2,
   .box3,
-  .box4,
-  .box5,
-  .box6 {
-    min-width: 100%;
+  .box4 {
+    width: 90%; /* Đặt chiều rộng của mỗi box bằng nhau trên thiết bị nhỏ */
   }
-}
-.arrow.black {
-  background: #000000;
 }
